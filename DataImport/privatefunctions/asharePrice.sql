@@ -18,13 +18,13 @@ where SecuCategory=1
 )
 
 
-select q.InnerCode,q.TradingDay,q.ClosePrice
+select q.InnerCode,q.TradingDay,q.MySelected
 from 
 	QT_DailyQuote as q
 where
 	q.InnerCode in (select InnerCode from seclist)
 and
-    q.TradingDay between '2005-01-01' and '2016-01-01'
+    q.TradingDay between ? and ?
 and 
     q.OpenPrice<>0
 order by InnerCode asc, TradingDay asc

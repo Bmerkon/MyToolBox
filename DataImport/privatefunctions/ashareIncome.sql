@@ -16,7 +16,7 @@ where SecuCategory=1
 	and u.LB=1176
 )
 
-select distinct seclist.innercode, s.UpdateTime,s.enddate, s.eps
+select distinct seclist.innercode, s.InfoPublDate,s.enddate, s.MySelected
 from 
 LC_IncomeStatementAll as s left join seclist on s.companycode=seclist.companycode
 where s.companycode in (select companycode from seclist)
@@ -24,5 +24,5 @@ and s.IfAdjusted=2
 and s.IfMerged=1
 and s.AccountingStandards=1
 and s.bulletinType=20
-and month(s.enddate)=12
+and month(s.enddate)=?
 order by seclist.innercode asc,s.InfoPublDate asc 

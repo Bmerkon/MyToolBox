@@ -16,10 +16,10 @@ where SecuCategory=1
 	and u.LB=1176
 )
 
-select distinct seclist.innercode, s.UpdateTime,s.enddate, s.QFIIHoldPropA
+select distinct seclist.innercode, s.UpdateTime as InfoPublDate,s.enddate, s.MySelected
 from 
 LC_StockHoldingSt as s left join seclist on s.companycode=seclist.companycode
 where s.companycode in (select companycode from seclist)
 and
-s.QFIIHoldPropA is not null
+s.MySelected is not null
 order by seclist.innercode asc,s.UpdateTime asc,s.enddate 

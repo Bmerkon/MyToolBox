@@ -17,7 +17,7 @@ where SecuCategory=1
 )
 
 ----select *
-select seclist.innercode,s.InfoPublDate,s.enddate,s.Ashares
+select seclist.innercode,s.InfoPublDate,s.enddate,s.MySelected
 from 
 	LC_ShareStru as s left join seclist on s.companycode=seclist.companycode
 where s.companycode in (select companycode from seclist)

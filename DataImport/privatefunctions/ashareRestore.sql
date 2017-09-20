@@ -28,7 +28,7 @@ where  s.InnerCode in (select InnerCode from seclist)
 and s.ExDiviDate is not null
 and s.EventProcedure=3131
 and s.ifdividend=1
-and s.ExDiviDate between '2005-01-01' and '2016-01-01'
+and s.ExDiviDate between ? and ?
 --order by s.innercode
 ),
 
@@ -38,7 +38,7 @@ select s.innercode,s.exrightdate,s.actualplaratio,s.plaprice from LC_ASharePlace
 where  s.InnerCode in (select InnerCode from seclist)
 and s.ExRightDate is not null
 and s.PlaPrice is not null
-and s.exrightdate between '2005-01-01' and '2016-01-01'
+and s.exrightdate between ? and ?
 --order by s.innercode
 ),
 
@@ -57,11 +57,11 @@ where
 s.companycode in (select companycode from seclist)
 and s.process=3131
 and ss.ifeffected=1
-and s.recovertradindate between '2005-01-01' and '2016-01-01'
+and s.recovertradindate between ? and ?
 --order by seclist.innercode,s.RecoverTradinDate;
 )
 
-select dvid.innercode,place.innercode,reform.innercode,
+select dvid.innercode as innercode1,place.innercode as innercode2,reform.innercode as innercode3,
 dvid.除息日,place.exrightdate as 除权日,reform.recovertradindate as 恢复交易日,
 dvid.送股,dvid.转增,dvid.每股分红,
 place.actualplaratio 十配n,place.plaprice as 配股价,

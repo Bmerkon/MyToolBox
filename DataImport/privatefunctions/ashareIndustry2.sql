@@ -17,7 +17,7 @@ where SecuCategory=1
 )
 
 
-select distinct seclist.innercode, s.InfoPublDate,s.CancelDate,s.FirstIndustryName,s.standard
+select distinct seclist.innercode, s.InfoPublDate,s.MySelected,s.standard
 from LC_ExgIndustry as s left join seclist on s.companycode=seclist.companycode
 where s.companycode in (select companycode from seclist)
 and

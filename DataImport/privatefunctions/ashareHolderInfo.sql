@@ -19,7 +19,7 @@ where SecuCategory=1
 	and u.LB=1176
 )
 
-select distinct seclist.innercode, s.InfoPublDate,s.enddate, s.SHNum
+select distinct seclist.innercode, s.InfoPublDate,s.enddate, s.MySelected
 from 
 LC_SHNumber as s left join seclist on s.companycode=seclist.companycode
 where s.companycode in (select companycode from seclist)
