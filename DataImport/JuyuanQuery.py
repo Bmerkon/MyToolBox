@@ -163,15 +163,15 @@ class JuYuanDB:
 
         # 把几列合并成1列，如：[nan,1,nan]合并成1
         sql_data['innercode']=sql_data['innercode1'].fillna(sql_data['innercode2']).fillna(sql_data['innercode3'])
-        sql_data['info_publdate']=sql_data['除息日'].fillna(sql_data['除权日']).fillna(sql_data['恢复交易日'])
-        sql_data.drop(labels=['innercode1','innercode2','innercode3','除息日','除权日','恢复交易日'],axis=1,inplace=True)
+        sql_data['info_publdate']=sql_data['股权登记日1'].fillna(sql_data['股权登记日2']).fillna(sql_data['股权登记日3'])
+        sql_data.drop(labels=['innercode1','innercode2','innercode3','股权登记日1','股权登记日2','股权登记日3'],axis=1,inplace=True)
 
-        # 需要昨日收盘价
-        pre_close=self.query_quote(stock_innercode,'PrevClosePrice',first_day,last_day,mode='tab')
+        # 需要收盘价
+        # pre_close=self.query_quote(stock_innercode,'PrevClosePrice',first_day,last_day,mode='tab')
         close=self.query_quote(stock_innercode,'ClosePrice',first_day,last_day,mode='tab')
 
-        # 合并两者
-        sql_new=pd.merge(sql_data, pre_close, how='left', on=['innercode','info_publdate'])
+        # 合并两者（计入股权登记日收盘价）
+        sql_new=pd.merge(sql_data, close, how='left', on=['innercode','info_publdate'])
 
         # 处理没有前收盘的数据
         def find_preclose(row):
@@ -182,18 +182,18 @@ class JuYuanDB:
             else:
                 return None
 
-        pre_close_lack=sql_new[sql_new['PrevClosePrice'].isnull()]
-        pre_close_lack['PrevClosePrice']=pre_close_lack.apply(find_preclose,axis=1)
-        sql_new.update(pre_close_lack[['innercode','PrevClosePrice']])
+        pre_close_lack=sql_new[sql_new['ClosePrice'].isnull()]
+        pre_close_lack['ClosePrice']=pre_close_lack.apply(find_preclose,axis=1)
+        sql_new.update(pre_close_lack[['innercode','ClosePrice']])
         #pdb.set_trace()
-        sql_new.dropna(subset=['PrevClosePrice'],inplace=True)
+        sql_new.dropna(subset=['ClosePrice'],inplace=True)
         sql_new.fillna(0,inplace=True)
 
         L=(sql_new['送股']+sql_new['转增']+sql_new['公司送股']+sql_new['公司转增股']+sql_new['对价股份'])/10
         M=sql_new['十配n']/10
         D=(sql_new['每股分红']+sql_new['公司派现']+sql_new['对价现金'])/10
         Q=sql_new['配股价']
-        sql_new['restore_factor']=(sql_new['PrevClosePrice']+Q*M-D)/(sql_new['PrevClosePrice']*(1+L+M))
+        sql_new['restore_factor']=(sql_new['ClosePrice']+Q*M-D)/(sql_new['ClosePrice']*(1+L+M))
         sql_data=sql_new[['innercode','info_publdate', 'data_date','restore_factor']]
 
         data_mat = self.process_data(stock_innercode, first_day, last_day, sql_data, 'restore_factor', ffill=False, mode=mode)
