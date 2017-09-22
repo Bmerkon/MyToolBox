@@ -146,7 +146,7 @@ class JuYuanDB:
         return data_mat,industry_list
 
     # 移植price
-    def query_quote(self,stock_innercode,name,first_day,last_day,mode='mat'):
+    def query_stockquote(self,stock_innercode,name,first_day,last_day,mode='mat'):
         sql = self.file2query('asharePrice.sql')
         sql = sql.replace('MySelected', name)
         sql_data = pd.read_sql(sql, self.conn, params=[first_day, last_day])
