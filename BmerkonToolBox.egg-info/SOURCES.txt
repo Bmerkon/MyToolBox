@@ -50,3 +50,17 @@ BmerkonToolBox/bt_algos/__init__.py
 BmerkonToolBox/bt_algos/algos.py
 BmerkonToolBox/bt_algos/common_strategies.py
 BmerkonToolBox/bt_algos/test.py
+BmerkonToolBox/dailydataupdate/__init__.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/DBfactor_params.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/HFTUpDate.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/__init__.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/factorUpDate.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/factor_params.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/rundaily.py
+BmerkonToolBox/dailydataupdate/dailyUpdate/test20171220.py
+BmerkonToolBox/factor/__init__.py
+BmerkonToolBox/factor/customfactor_p/DBfactor.py
+BmerkonToolBox/factor/customfactor_p/__init__.py
+BmerkonToolBox/factor/customfactor_p/core.py
+BmerkonToolBox/factor/customfactor_p/customfactor.py
+BmerkonToolBox/factor/customfactor_p/test1.py

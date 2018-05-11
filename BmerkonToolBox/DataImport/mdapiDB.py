@@ -15,6 +15,7 @@ import os
 
 
 class MDApi:
+    # 连接MDAPI的接口
     
     def __init__(self):
         self.conn=db_pgs.connect(database='mdserver',user='mdapi',password='mdapi',host='192.168.1.190',port='5432')
@@ -36,6 +37,7 @@ class MDApi:
     
 
 class ChiApi:
+    # 连接ChiAPI的接口
     def __init__(self):
         self.conn=db_pgs.connect(database='stockdata',user='gaoyuan',password='gaoyuan',host='192.168.1.20',port='5432')
         self.sql_fpath =  os.path.dirname(os.path.abspath(__file__))+'/MDapisql'

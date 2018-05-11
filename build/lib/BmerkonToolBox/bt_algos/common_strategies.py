@@ -22,18 +22,21 @@ from imp import reload
 
 
 
-sys.path.append('D:/OneDrive/pythonwork/MyToolBox/DataImport/')
-from JuyuanQuery import JuYuanDB
+#sys.path.append('D:/OneDrive/pythonwork/MyToolBox/DataImport/')
+#from JuyuanQuery import JuYuanDB
+from BmerkonToolBox.DataImport.JuyuanQuery import JuYuanDB
 #sys.path.append('D:/OneDrive/pythonwork/MyToolBox/dailydataupdate/dailyUpdate/')
 #from dailyUpDate import load_names
 sys.path.append('D:/OneDrive/pythonwork/MyToolBox/factor/customfactor_p/')
 #from customfactor.customfactor import load_names_f
-from customfactor import load_names_f
-sys.path.append('D:/OneDrive/pythonwork/MyToolBox/bt_algos/')
-import algos
-sys.path.append('D:/OneDrive/pythonwork/MyToolBox/SimpleTools/')
-from basicfunctions import *
-
+#from customfactor import load_names_f
+from BmerkonToolBox.dailydataupdate.dailyUpdate.factorUpDate import load_names_f
+from BmerkonToolBox.bt_algos import algos
+#sys.path.append('D:/OneDrive/pythonwork/MyToolBox/bt_algos/')
+#import algos
+#sys.path.append('D:/OneDrive/pythonwork/MyToolBox/SimpleTools/')
+#from basicfunctions import *
+from BmerkonToolBox.SimpleTools.basicfunctions import *
 #%%
 def commission_fn(p,q):
     return np.abs(p*q*0.001)
