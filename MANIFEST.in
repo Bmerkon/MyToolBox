@@ -1,0 +1,2 @@
+include BmerkonToolBox/DataImport/privatefunctions/*.sql
+include BmerkonToolBox/DataImport/MDapisql/*sql
