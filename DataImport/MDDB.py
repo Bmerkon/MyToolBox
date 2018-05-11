@@ -8,7 +8,7 @@ import pdb
 class MDDB:
     def __init__(self):
         self.conn = db_pgs.connect(database='mdserver',user='mdapi',password='mdapi',host='192.168.1.190',port='5432')
-        self.sql_fpath = 'D:\pythonwork\MyToolBox\DataImport\privatefunctions'
+        self.sql_fpath = 'D:\OneDrive\pythonwork\MyToolBox\DataImport\privatefunctions'
         self.firstday = '2010-01-01'
         self.lastday = '2017-06-01'
 

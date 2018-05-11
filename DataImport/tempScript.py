@@ -23,9 +23,10 @@ stockinfo=JDB.query_stockinfo()
 stockinfo.head(5)
 
 #%%
-TotalShareholderEquity=JDB.query_balance(stockinfo.index.values,'TotalShareholderEquity','2001-01-01','2017-01-01')
 
 
+s=JDB.query_singlequote('000001','closeprice','2017-01-01','2017-10-01')
+print(s)
 
 
 

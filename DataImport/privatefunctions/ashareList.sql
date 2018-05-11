@@ -1,4 +1,4 @@
-select distinct s.SecuCode ,s.InnerCode,s.ChiName,s.ListedDate,z.MS Exchange ,u.MS sState ,s.SecuAbbr
+select distinct s.SecuCode ,s.CompanyCode,s.InnerCode,s.ChiName,s.ListedDate,z.MS Exchange ,u.MS sState ,s.SecuAbbr
 from 
 	SecuMain as s,
 	 CT_SystemConst as z,

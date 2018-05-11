@@ -4,6 +4,6 @@ datetime>='2017-03-01'
 and
 datetime<='2090-07-01'
 and
-ticker like 'rb%'
+ticker like 'SR%'
 order by
 ticker,datetime
