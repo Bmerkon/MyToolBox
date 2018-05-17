@@ -1,2 +1,3 @@
-include BmerkonToolBox/DataImport/privatefunctions/*.sql
-include BmerkonToolBox/DataImport/MDapisql/*sql
+include bmerkon_toolbox/dbconnect/juyuan_sql/*.sql
+include bmerkon_toolbox/dbconnect/mdapi_sql/*.sql
+include bmerkon_toolbox/factor/factor_sql/*.sql

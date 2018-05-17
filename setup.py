@@ -1,6 +1,6 @@
 from setuptools import setup,find_packages
 
-setup(name='BmerkonToolBox',
+setup(name='bmerkon_toolbox',
       version='0.1',
       description='Bmerkon own work',
       author='Bmerkon',
